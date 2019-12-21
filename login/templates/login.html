@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" type="text/css" media="all">
+    <title>Login</title>
+</head>
+<body>
+    <div class="prompt">
+        <form method="post" action="/login" accept-charset="utf-8">
+            <div class="title">
+                <p>Sign in</p>
+            </div>
+            <div class="">
+                {% for error in form.name.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+                {% for error in form.passwd.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            <label for="username" class="fancy-input">
+                {{ form.name(placeholder=" ") }}
+                <span class="label">Username</span> 
+            </label>
+            <br></br>
+            <label for="password" class="fancy-input">
+                {{ form.passwd(placeholder=" ", type="password") }}
+                <span class="label">Password</span> 
+            </label>
+            <input class="fancy-button" type="submit" value="{{ url_for('login_bp.success') }}" />
+        </form>
+    </div>
+</body>
+</html>
