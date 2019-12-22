@@ -1,9 +1,13 @@
 from flask import Blueprint, render_template
 from flask import current_app as app
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 login_bp = Blueprint('login_bp', __name__,
                         template_folder = 'templates',
-                        static_folder = 'static')
+                        static_folder = 'static',
+                        static_url_path = "/login/static")
 
 """
 Login form for flaskWTF
