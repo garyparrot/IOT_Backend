@@ -14,23 +14,24 @@
                 <p>Sign in</p>
             </div>
             <div class="">
-                {% for error in form.name.errors %}
+                {% for error in form.username.errors %}
                     <p>{{ error }}</p>
                 {% endfor %}
-                {% for error in form.passwd.errors %}
+                {% for error in form.password .errors %}
                     <p>{{ error }}</p>
                 {% endfor %}
             </div>
             <label for="username" class="fancy-input">
-                {{ form.name(placeholder=" ") }}
+                {{ form.username(placeholder=" ") }}
                 <span class="label">Username</span> 
             </label>
             <br></br>
             <label for="password" class="fancy-input">
-                {{ form.passwd(placeholder=" ", type="password") }}
+                {{ form.password(placeholder=" ", type="password") }}
                 <span class="label">Password</span> 
             </label>
-            <input class="fancy-button" type="submit" value="{{ url_for('login_bp.success') }}" />
+
+            <input class="fancy-button" type="submit" value="Login" />
         </form>
     </div>
 </body>

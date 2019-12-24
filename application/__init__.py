@@ -17,6 +17,9 @@ def create_app(devTarget = "debug"):
 
         from . import routes
 
+        # Create tables for our models
+        db.create_all()
+
         app.register_blueprint(routes.login_bp)
 
         return app
