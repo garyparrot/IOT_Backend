@@ -5,7 +5,7 @@ db = SQLAlchemy()
 
 def create_app(devTarget = "debug"):
 
-    app = Flask(__name__, instance_relative_config = False)
+    app = Flask(__name__, instance_relative_config = False, static_folder = None)
 
     # Configuration
     app.config.from_object('config.Config')
@@ -21,5 +21,6 @@ def create_app(devTarget = "debug"):
         db.create_all()
 
         app.register_blueprint(routes.login_bp)
+        app.register_blueprint(routes.dashboard_bp)
 
         return app
