@@ -9,6 +9,9 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
 
+    UPLOAD_SECRET = os.environ.get('UPLOAD_SECRET')
+    UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
+
 class ProductionConfig(Config):
     DEBUG   = False
     TESTING = False

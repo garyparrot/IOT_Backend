@@ -4,6 +4,7 @@
 if [ ! -e IOT_Frontend ] || [ "$#" -ne 0 ] && [ "$1" = "rebuild" ];  then
     git clone git@github.com:garyparrot/IOT_Frontend.git
     cd IOT_Frontend 
+    git pull origin master
     npm install
     npx react-scripts build
     cd ..
