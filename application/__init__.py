@@ -22,5 +22,6 @@ def create_app(devTarget = "debug"):
 
         app.register_blueprint(routes.login_bp)
         app.register_blueprint(routes.dashboard_bp)
+        app.register_blueprint(routes.api_bp)
 
         return app
