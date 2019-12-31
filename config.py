@@ -12,6 +12,8 @@ class Config:
     UPLOAD_SECRET = os.environ.get('UPLOAD_SECRET')
     UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
 
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+
 class ProductionConfig(Config):
     DEBUG   = False
     TESTING = False

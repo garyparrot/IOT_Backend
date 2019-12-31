@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+{% macro fancy_input(input, type = 'text') -%}
+    <label for="{{ input.name }}" class="fancy-input">
+        {{ input(placeholder=" ", type=type) }}
+        <span class="label">{{ input.name }}</span> 
+    </label>
+{%- endmacro %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('auth_bp.static', filename='css/login.css') }}" type="text/css" media="all">
+    <title>Signup</title>
+</head>
+<body>
+    <div class="prompt">
+        <form method="post" action="/signup" accept-charset="utf-8">
+            <div class="title">
+                <p>Sign up</p>
+            </div>
+            <div class="">
+                {% for error in form.username.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+                {% for error in form.password .errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div class="">
+                {% with msg = get_flashed_messages() %}
+                    {% if msg %}
+                        {% for m in msg %}
+                            <p>{{ m }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            {{ fancy_input(form.username) }}
+            <br/>
+            {{ fancy_input(form.password, "password") }}
+
+            <input class="fancy-button" type="submit" value="Login" />
+        </form>
+    </div>
+</body>
+</html>

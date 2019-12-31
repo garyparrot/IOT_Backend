@@ -1,16 +1,19 @@
 import os, glob
 from flask import Blueprint, request, render_template, redirect, url_for, jsonify, send_file
 from flask import current_app as app
+from flask_login import login_required
 from datetime import datetime
 from .records import generate_path, get_records
 
 api_bp = Blueprint('api_bp', __name__, url_prefix = '/api')
 
 @api_bp.route('/records', methods = ['GET'])
+@login_required
 def image_records():
     return jsonify(get_records())
 
 @api_bp.route('/images')
+@login_required
 def download_image():
     if 'imageId' not in request.args:
         return "Nothing", 404
@@ -24,12 +27,8 @@ def download_image():
 
 # Writing shit code :(
 @api_bp.route('/upload_image', methods = [ 'GET','POST' ])
+@login_required
 def upload_image():
-
-    # Test if the cookie match the freaking secret
-    # TODO: Remove this code, it is here for testing propose.
-    if request.cookies.get('X-UPLOAD-SECRET','') != app.config['UPLOAD_SECRET']:
-        return "Stay back", 401
 
     if request.method == 'POST':
         # Test if the image was in the request result
